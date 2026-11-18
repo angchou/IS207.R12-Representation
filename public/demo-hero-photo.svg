@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" rx="24" />
+  <circle cx="980" cy="160" r="220" fill="#38bdf8" opacity="0.12" />
+  <circle cx="220" cy="520" r="260" fill="#34d399" opacity="0.12" />
+  <rect x="80" y="80" width="1040" height="515" rx="20" fill="#0f172a" opacity="0.75" stroke="#334155" stroke-width="2" />
+  <rect x="130" y="140" width="240" height="38" rx="19" fill="#065f46" />
+  <text x="250" y="165" fill="#6ee7b7" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">NEXT/IMAGE AVIF • 84 KB</text>
+  <text x="130" y="250" fill="#f8fafc" font-family="sans-serif" font-size="46" font-weight="bold">High-Res Hero Banner (Optimized)</text>
+  <text x="130" y="305" fill="#94a3b8" font-family="sans-serif" font-size="24">Tự động nén WebP/AVIF • Khóa khung tỷ lệ 16:9 • CLS = 0.00</text>
+  <rect x="130" y="360" width="940" height="170" rx="16" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+  <rect x="170" y="405" width="260" height="80" rx="12" fill="#0f172a" />
+  <text x="300" y="440" fill="#f43f5e" font-family="monospace" font-size="20" font-weight="bold" text-anchor="middle">&lt;img&gt; Gốc: 2,450 KB</text>
+  <text x="300" y="468" fill="#94a3b8" font-family="sans-serif" font-size="15" text-anchor="middle">Tải chậm 1.45s • Gây giật CLS 0.28</text>
+  <path d="M 480 445 L 570 445" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" />
+  <polygon points="570,435 595,445 570,455" fill="#34d399" />
+  <rect x="640" y="405" width="380" height="80" rx="12" fill="#064e3b" stroke="#10b981" stroke-width="2" />
+  <text x="830" y="440" fill="#34d399" font-family="monospace" font-size="20" font-weight="bold" text-anchor="middle">&lt;Image /&gt; AVIF: 84 KB (-96.5%)</text>
+  <text x="830" y="468" fill="#a7f3d0" font-family="sans-serif" font-size="15" text-anchor="middle">Tải 38ms • Tự động srcset • CLS 0.00</text>
+</svg>
