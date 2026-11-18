@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/helper-string-parser": "file:vendor/babel-helper-string-parser-7.29.7.tgz",
+    "@babel/helper-validator-identifier": "file:vendor/babel-helper-validator-identifier-7.29.7.tgz",
+    "@babel/parser": "file:vendor/babel-parser-7.29.8.tgz",
+    "@babel/types": "file:vendor/babel-types-7.29.8.tgz",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "file:vendor/date-fns-4.4.0.tgz",

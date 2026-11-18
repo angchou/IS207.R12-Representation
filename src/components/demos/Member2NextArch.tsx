@@ -229,9 +229,11 @@ export function Member2NextArch({ activeSlide }: { activeSlide: number }) {
                   Server Components (RSC) vs Client Components — Đo JS Bundle thật của 2 Route
                 </h2>
                 <p className="mt-1 text-xs text-neutral-400">
-                  Cả 2 route <code>/rsc-demo</code> và <code>/client-demo</code> đều chạy cùng logic
-                  validate bằng <code>zod</code> và format ngày bằng <code>date-fns</code>. Hãy bấm
-                  nạp từng route bên phải để đọc lượng JS thật từ{" "}
+                  Cả 2 route <code>/rsc-demo</code> và <code>/client-demo</code> đều chạy cùng một
+                  pipeline nặng: parse AST &amp; Syntax Highlighting code TypeScript/JSX bằng{" "}
+                  <code>@babel/parser</code> + <code>@babel/types</code>, validate{" "}
+                  <strong>600 bản ghi</strong> bằng <code>zod</code> và format ngày bằng{" "}
+                  <code>date-fns</code>. Hãy bấm nạp từng route bên phải để đọc lượng JS thật từ{" "}
                   <code>iframe.contentWindow.performance</code>.
                 </p>
               </div>
@@ -284,7 +286,7 @@ export function Member2NextArch({ activeSlide }: { activeSlide: number }) {
                   </div>
                   <div className="text-[11px] text-neutral-500">
                     {clientJsResources
-                      ? `${clientJsResources.length} file JS (kèm date-fns + zod)`
+                      ? `${clientJsResources.length} file JS (kèm @babel/parser + zod + date-fns)`
                       : "Bấm nút Đo Route Client"}
                   </div>
                 </div>

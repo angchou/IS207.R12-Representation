@@ -325,6 +325,7 @@ export function Member1ReactOpt({ activeSlide }: { activeSlide: number }) {
         (r) =>
           r.type === "js" &&
           (r.file.toLowerCase().includes("heavychart") ||
+            r.file.toLowerCase().includes("babel") ||
             r.file.toLowerCase().includes("date-fns") ||
             r.file.toLowerCase().includes("zod") ||
             !beforeResourcesRef.current.has(r.name))
@@ -815,8 +816,9 @@ function FilteredView({ items, minScore }) {
                 </h2>
                 <p className="mt-1 text-xs text-neutral-400">
                   Khi bấm nút bên phải, trình duyệt mới gửi request tải chunk{" "}
-                  <code>HeavyChartModal</code> (chứa <code>date-fns</code> + <code>zod</code>). Bảng
-                  bên dưới tự động bắt đúng entry mạng mới sinh ra trong{" "}
+                  <code>HeavyChartModal</code> (chứa <code>@babel/parser</code> +{" "}
+                  <code>@babel/types</code> + <code>zod</code> + <code>date-fns</code>). Bảng bên
+                  dưới tự động bắt đúng entry mạng mới sinh ra trong{" "}
                   <code>PerformanceResourceTiming</code>.
                 </p>
               </div>
