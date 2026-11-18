@@ -1,8 +1,0 @@
-{
-  "/api/demo/stream/route": "app/api/demo/stream/route.js",
-  "/api/demo/cache/route": "app/api/demo/cache/route.js",
-  "/api/demo/css-stats/route": "app/api/demo/css-stats/route.js",
-  "/page": "app/page.js",
-  "/client-demo/page": "app/client-demo/page.js",
-  "/rsc-demo/page": "app/rsc-demo/page.js"
-}

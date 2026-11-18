@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST="{\"components/demos/Member1ReactOpt.tsx -> ./HeavyChartModal\":{\"id\":\"components/demos/Member1ReactOpt.tsx -> ./HeavyChartModal\",\"files\":[\"static/chunks/_app-pages-browser_src_components_demos_HeavyChartModal_tsx.js\"]}}"
