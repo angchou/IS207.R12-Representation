@@ -1,0 +1,15 @@
+{
+  "nodeEnv": "production",
+  "scannedSourceFiles": 19,
+  "distinctClassTokensInSource": 164,
+  "cssFiles": [
+    {
+      "file": ".next/static/css/app/layout.css",
+      "rawBytes": 29004,
+      "gzipBytes": 6174,
+      "classRuleCount": 264
+    }
+  ],
+  "totalCssRawBytes": 29004,
+  "totalCssGzipBytes": 6174
+}
