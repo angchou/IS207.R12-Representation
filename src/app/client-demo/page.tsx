@@ -15,28 +15,33 @@ const ReportItemSchema = z.object({
 
 export default function ClientBundleDemoPage() {
   const [filterStatus, setFilterStatus] = useState<"ALL" | "OK" | "WARN">("ALL");
+  const [renderedAt, setRenderedAt] = useState<string>("—");
+
+  React.useEffect(() => {
+    setRenderedAt(format(new Date(), "HH:mm:ss dd/MM/yyyy", { locale: vi }));
+  }, []);
 
   const reports = useMemo(() => {
-    const now = new Date();
+    const baseDate = parseISO("2025-05-15T08:00:00.000Z");
     const raw = [
       {
         id: "RPT-01",
         title: "Kiểm tra đóng gói Client Component",
-        createdAt: subDays(now, 1).toISOString(),
+        createdAt: subDays(baseDate, 1).toISOString(),
         latencyMs: 14,
         status: "OK",
       },
       {
         id: "RPT-02",
         title: "Đồng bộ dữ liệu danh mục sản phẩm",
-        createdAt: subDays(now, 4).toISOString(),
+        createdAt: subDays(baseDate, 4).toISOString(),
         latencyMs: 32,
         status: "OK",
       },
       {
         id: "RPT-03",
         title: "Phân tích chỉ số Web Vitals định kỳ",
-        createdAt: subDays(now, 9).toISOString(),
+        createdAt: subDays(baseDate, 9).toISOString(),
         latencyMs: 48,
         status: "WARN",
       },
@@ -53,7 +58,7 @@ export default function ClientBundleDemoPage() {
           Route Client Component (&quot;use client&quot;) — đóng gói cả date-fns + zod xuống trình duyệt
         </span>
         <span className="font-mono text-xs text-neutral-400">
-          Render lúc: {format(new Date(), "HH:mm:ss dd/MM/yyyy", { locale: vi })}
+          Render lúc: {renderedAt}
         </span>
       </div>
 
@@ -90,7 +95,11 @@ export default function ClientBundleDemoPage() {
               <td className="p-2 font-mono text-neutral-300">{r.id}</td>
               <td className="p-2 text-neutral-100">{r.title}</td>
               <td className="p-2 font-mono text-neutral-300">
-                {formatDistanceToNow(parseISO(r.createdAt), { addSuffix: true, locale: vi })}
+                {format(parseISO(r.createdAt), "dd/MM/yyyy", { locale: vi })} (
+                {renderedAt !== "—"
+                  ? formatDistanceToNow(parseISO(r.createdAt), { addSuffix: true, locale: vi })
+                  : "date-fns"}
+                )
               </td>
               <td className="p-2 font-mono text-neutral-300">{r.latencyMs} ms</td>
             </tr>

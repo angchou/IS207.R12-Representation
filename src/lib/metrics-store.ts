@@ -36,20 +36,25 @@ type State = Partial<Metrics>;
 
 const STORAGE_KEY = "frontend-opt-demo-metrics-v2";
 const listeners = new Set<() => void>();
-let state: State | null = null;
+let state: State = {};
+let hydratedFromSession = false;
 
 function read(): State {
-  if (state) return state;
-  state = {};
-  if (typeof window !== "undefined") {
-    try {
-      const raw = window.sessionStorage.getItem(STORAGE_KEY);
-      if (raw) state = JSON.parse(raw) as State;
-    } catch {
-      /* ignore */
-    }
-  }
   return state;
+}
+
+export function hydrateMetricsFromSession() {
+  if (hydratedFromSession || typeof window === "undefined") return;
+  hydratedFromSession = true;
+  try {
+    const raw = window.sessionStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      state = JSON.parse(raw) as State;
+      listeners.forEach((l) => l());
+    }
+  } catch {
+    /* ignore */
+  }
 }
 
 function write(next: State) {
@@ -93,10 +98,17 @@ function subscribe(cb: () => void) {
   return () => listeners.delete(cb);
 }
 
+const EMPTY_STATE: State = {};
+
 export function useMetric<K extends Key>(key: K): Metrics[K] | undefined {
   return useSyncExternalStore(
-    subscribe,
+    (cb) => {
+      if (typeof window !== "undefined" && !hydratedFromSession) {
+        queueMicrotask(hydrateMetricsFromSession);
+      }
+      return subscribe(cb);
+    },
     () => read()[key],
-    () => undefined
+    () => EMPTY_STATE[key]
   );
 }

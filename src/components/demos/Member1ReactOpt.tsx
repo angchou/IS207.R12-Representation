@@ -272,13 +272,19 @@ export function Member1ReactOpt({ activeSlide }: { activeSlide: number }) {
   const [compilerView, setCompilerView] = useState<"manual" | "compiler">("manual");
   const [unrelatedCounter, setUnrelatedCounter] = useState(1);
   const [minScore, setMinScore] = useState(80);
+  const [mounted, setMounted] = useState(false);
   const filterCalcCountRef = useRef(0);
   const lastFilterDurationRef = useRef(0);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const runHeavyFilterAndSort = useCallback((threshold: number) => {
-    const t0 = performance.now();
+    const t0 = typeof performance !== "undefined" ? performance.now() : 0;
     const out = PRODUCTS.filter((p) => p.score >= threshold).sort((a, b) => b.price - a.price);
-    lastFilterDurationRef.current = Number((performance.now() - t0).toFixed(2));
+    const t1 = typeof performance !== "undefined" ? performance.now() : 0;
+    lastFilterDurationRef.current = Number((t1 - t0).toFixed(2));
     filterCalcCountRef.current += 1;
     return out;
   }, []);
@@ -699,7 +705,8 @@ export function Member1ReactOpt({ activeSlide }: { activeSlide: number }) {
                 <div className="border border-neutral-800 bg-neutral-950 p-3">
                   <div className="text-neutral-400">Số lần hàm Filter+Sort 5,000 SP đã chạy:</div>
                   <div className="mt-1 font-mono text-base font-bold text-neutral-100">
-                    {filterCalcCountRef.current} lần ({lastFilterDurationRef.current} ms/lần)
+                    {filterCalcCountRef.current} lần (
+                    {mounted ? `${lastFilterDurationRef.current} ms/lần` : "—"})
                   </div>
                   <div className="mt-1 text-[11px] text-neutral-400">
                     {memoEnabled

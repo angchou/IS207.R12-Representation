@@ -38,8 +38,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${sansFont.variable} ${monoFont.variable} dark`}>
-      <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+    <html
+      lang="vi"
+      suppressHydrationWarning
+      className={`${sansFont.variable} ${monoFont.variable} dark`}
+    >
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-neutral-950 text-neutral-100 antialiased"
+      >
         {children}
         <Script id="demo-third-party-analytics" src="/analytics-mock.js" strategy="lazyOnload" />
       </body>
